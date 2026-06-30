@@ -1,0 +1,20 @@
+name: Wind Alert for Pool Umbrellas
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # 7am Central Time
+  workflow_dispatch:  # allows manual testing
+
+jobs:
+  check-wind:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install requests
+      - name: Check wind and notify
+        run: python check_wind.py
