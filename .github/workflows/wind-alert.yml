@@ -2,7 +2,8 @@ name: Wind Alert for Pool Umbrellas
 
 on:
   schedule:
-    - cron: '0 12 * * *'  # 7am Central Time
+    - cron: '*/30 12-23 * * *'  # 7am-6pm Central (12:00-23:30 UTC)
+    - cron: '*/30 0-3 * * *'    # 7pm-10pm Central (00:00-03:00 UTC next day)
   workflow_dispatch:  # allows manual testing
 
 jobs:
